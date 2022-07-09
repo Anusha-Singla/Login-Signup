@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+***********SETUP STORE*********
+1. Create a new react app using "npx create-react-app my-app".
+2. Then install redux, react-redux, redux-logger, redux-thunk, redux-devtools-extension.
+3. Create a folder named "stores".
+4. Create a file RootReducer.js inside stores folder & combine all the reducers in it.
+const combineReducer = combineReducers({
+    register: RegisterReducer,
+    login: LoginReducer
+})
+const rootReducer = (state, action) => {
+    return combineReducer(state, action)
+}
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+5. Then create Store.js file inside stores folder & include rootReducer & thunk in the createStore
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
-## Available Scripts
+6. Then inside index.js file wrap your app with Provider  
+<Provider store={store}>
+    <App />
+</Provider>
 
-In the project directory, you can run:
+7. Then create appDispatch.js file inside stores folder
+const store = configureStore ({
+    reducer: rootReducer
+})
 
-### `npm start`
+8. Create index.js file inside stores folder and export all services from there.
+9. Now create all the files of a particular component.
+a. RegisterType
+b. RegisterAction
+c. RegsiterReducer
+d. RegisterService 
+for your Regsiter Component.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+10. For server install JSON Server using "npm install json-server".
+11. Create "db.json" file with some dummy data outside the src folder
+11. Run the json server on any port using "npx json-server --watch db.json --port 8000"
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This is how you can set up the redux-store and use the JSON server in your project
