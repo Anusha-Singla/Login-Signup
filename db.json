@@ -1,0 +1,39 @@
+{
+  "authentication": [
+    {
+      "username": "ansuha",
+      "email": "ansuha",
+      "password": "ansuhasd",
+      "confirmPassword": "ansuha",
+      "id": 2
+    },
+    {
+      "username": "anusha",
+      "email": "anushasingla737@gmail.com",
+      "password": "456456",
+      "confirmPassword": "456456",
+      "id": 3
+    },
+    {
+      "username": "Anusha",
+      "email": "singlaanusha2@gmail.com",
+      "password": "963963",
+      "confirmPassword": "963963",
+      "id": 4
+    },
+    {
+      "username": "Anusha",
+      "email": "singlaanusha2@gmail.com",
+      "password": "963963",
+      "confirmPassword": "963963",
+      "id": 5
+    },
+    {
+      "username": "vishal kumar kashyap",
+      "email": "kashyapv899@gmail.com",
+      "password": "987987",
+      "confirmPassword": "987987",
+      "id": 6
+    }
+  ]
+}
