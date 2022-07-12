@@ -25,7 +25,6 @@ const Login = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         dispatch(loginUser()).then(response => {
-            console.log("response", response.data)
             return response.data; 
         })
     }

@@ -17,7 +17,6 @@ const Register = () => {
     //TARGET THE USER INPUT
     const inputText = (e) => {
         const { name, value } = e.target;
-        console.log("name,value", e.target.name, e.target.value)
         //SETTING UP THE STATE 
         setSignupData((preValue) => {
             return {
@@ -28,7 +27,6 @@ const Register = () => {
     };
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log("-------",signupData)
         dispatch(registerUser(signupData))
     }
     return (
