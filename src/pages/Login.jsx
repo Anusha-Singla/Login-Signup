@@ -47,8 +47,8 @@ const Login = () => {
     }
     return (
         <Paper elevation={3} p={2}>
-            {loggedIn ? <Link to="/home" /> : <Link to="/" />}
-            {isLoggedIn ? <Link to="/home" /> : null}
+            {/* {loggedIn ? <Link to="/home" /> : <Link to="/" />}
+            {isLoggedIn ? <Link to="/home" /> : null} */}
             <FormGroup>
                 <Box
                     component="form"
