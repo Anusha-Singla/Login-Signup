@@ -1,4 +1,4 @@
-import { Button, Paper } from '@mui/material';
+import { Button, Link, Paper } from '@mui/material';
 import React, { useState } from 'react';
 import FormGroup from '@mui/material/FormGroup';
 import Box from '@mui/material/Box';
@@ -14,6 +14,11 @@ const Login = () => {
         password: ''
     })
     const [isLoggedIn, updateIsLoggedIn] = useState(false);
+    // const token = localStorage.getItem("user-info");
+    // let loggedIn = true;
+    // if (token == null) {
+    //     loggedIn = false;
+    // }
     const inputText = (e) => {
         const { name, value } = e.target
         setLoginData((prevValue) => {
@@ -42,6 +47,8 @@ const Login = () => {
     }
     return (
         <Paper elevation={3} p={2}>
+            {loggedIn ? <Link to="/home" /> : <Link to="/" />}
+            {isLoggedIn ? <Link to="/home" /> : null}
             <FormGroup>
                 <Box
                     component="form"
