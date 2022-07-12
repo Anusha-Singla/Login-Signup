@@ -5,14 +5,15 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useAppDispatch } from '../stores/appDispatch';
 import { loginUser } from '../stores';
-import { useSelector } from 'react-redux';
 
 const Login = () => {
     const dispatch = useAppDispatch();
+    const [responseData, setResponseData] = useState({})
     const [loginData, setLoginData] = useState({
         email: '',
         password: ''
     })
+    const [isLoggedIn, updateIsLoggedIn] = useState(false);
     const inputText = (e) => {
         const { name, value } = e.target
         setLoginData((prevValue) => {
@@ -25,10 +26,20 @@ const Login = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         dispatch(loginUser()).then(response => {
-            return response.data; 
+            setResponseData(response.data)
+            if (responseData.length !== 0) {
+                for (let i = 0; i < responseData.length; i++) {
+                    if (responseData[i].email === loginData.email) {
+                        if (responseData[i].password === loginData.password) {
+                            updateIsLoggedIn(true)
+                            let data = [responseData[i].email, responseData[i].password];
+                            localStorage.setItem("user-info", JSON.stringify(data));
+                        }
+                    }
+                }
+            }
         })
     }
-
     return (
         <Paper elevation={3} p={2}>
             <FormGroup>
