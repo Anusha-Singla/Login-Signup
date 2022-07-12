@@ -6,7 +6,6 @@ export const registerUser = (signupData) => {
         try {
             dispatch({ type: REGISTER_USER_REQUEST });
             const response = axios.post('http://localhost:8000/authentication', signupData);                
-            console.log("from service", JSON.stringify(signupData));
             dispatch({ type: REGISTER_USER_SUCCESS,
              });
            return response.json();
