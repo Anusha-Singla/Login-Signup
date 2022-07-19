@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import Button from "./Button";
+import Buttons from "./Buttons";
 import Count from "./Count";
 import Title from "./Title";
 
@@ -16,9 +16,9 @@ const ParentComponent = () => {
     return (<>
         <Title />
         <Count text="Age" count={age}></Count>
-        <Button handleClick={increasedAge}>Increased Age</Button>
+        <Buttons handleClick={increasedAge}>Increased Age</Buttons>
         <Count text="Salary" count={salary}></Count>
-        <Button handleClick={increasedSalary}>Increased Salary</Button>
+        <Buttons handleClick={increasedSalary}>Increased Salary</Buttons>
     </>)
 }
 export default ParentComponent;

@@ -3,20 +3,22 @@ import About from './About';
 import ComponentA from '../components/ComponentA';
 import ParentComponent from '../components/ReactMemo/ParentComponent';
 import CounterMemo from '../components/CounterMemo';
+import CustomHook from '../components/CustomHook';
+import { Button } from '@mui/material';
 
 const FName = createContext();
 const LName = createContext();
 
-const initalCount = {count: 0};
-const reducer = (state, action) =>{
-    switch(action.type){
+const initalCount = { count: 0 };
+const reducer = (state, action) => {
+    switch (action.type) {
         case "next":
-            return {count: state.count+1}
+            return { count: state.count + 1 }
         case "previous":
-            return {count: state.count-1}
+            return { count: state.count - 1 }
         case 'reset':
-            return {count: 0}
-        default :
+            return { count: 0 }
+        default:
             throw new Error();
     }
 }
@@ -26,8 +28,8 @@ const Home = () => {
     const [increment, setIncrement] = useState(0);
     const [singleUser, setSingleUser] = useState("Aarush");
     const newReference = useRef(0);
-    const [state, dispatch] = useReducer(reducer, initalCount) 
-    
+    const [state, dispatch] = useReducer(reducer, initalCount)
+
     useEffect(() => {
         setIncrement(increment + 1)
     }, [])
@@ -39,7 +41,7 @@ const Home = () => {
         <>
             <h2>React Hooks Implementation</h2>
             <div><h4>1. useState</h4>
-                <p> {count} <button onClick={() => setCount(count + 1)}>Counter</button></p>
+                <p> {count} <Button variant="outlined" onClick={() => setCount(count + 1)}>Counter</Button></p>
             </div>
             <div><h4>2. useEffect</h4>
                 <p>{increment} times!</p>
@@ -59,20 +61,23 @@ const Home = () => {
             <div><h4>4. useRef</h4>
                 <p>Example of useRef with button click to check the count of button pressed.
                     #Check console
-                    <button onClick={handleCount}>Count</button>
+                    <Button variant="outlined" onClick={handleCount}>Count</Button>
                 </p>
             </div>
             <div><h4>5. useReducer</h4>
                 <p>Count - {state.count}</p>
-                <button onClick={()=>dispatch({type:'next'})}>➕</button>
-                <button onClick={()=>dispatch({type:'previous'})}>➖</button>
-                <button onClick={()=>dispatch({type:'reset'})}>⚙</button>
+                <Button variant="outlined" onClick={() => dispatch({ type: 'next' })}>➕</Button>
+                <Button variant="outlined" onClick={() => dispatch({ type: 'previous' })}>➖</Button>
+                <Button variant="outlined" onClick={() => dispatch({ type: 'reset' })}>⚙</Button>
             </div>
             <div><h4>6. React.memo & useCallback</h4>
-               <ParentComponent/>
+                <ParentComponent />
             </div>
             <div><h4>7. useMemo</h4>
-             <CounterMemo/>
+                <CounterMemo />
+            </div>
+            <div><h4>8. Custom Hooks</h4>
+                <CustomHook />
             </div>
         </>
     )

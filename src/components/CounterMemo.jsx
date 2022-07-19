@@ -1,3 +1,4 @@
+import { Button, ButtonBase } from '@mui/material';
 import React, { useState, useMemo } from 'react';
 const CounterMemo = () => {
     const [counterOne, setCounterOne] = useState(0);
@@ -16,9 +17,9 @@ const CounterMemo = () => {
     //Tell react not to execute isEven when incTwo execute using useMemo
     return (<div>
         <div>{counterOne}<span>{isEven? "Even" : "Odd"}</span>
-        <button onClick={incOne}>Count-1</button></div>
+        <Button variant="outlined" onClick={incOne}>Count-1</Button></div><br/>
         <div>{counterTwo} 
-        <button onClick={incTwo}>Count-2</button></div> 
+        <Button variant='outlined' onClick={incTwo}>Count-2</Button></div> 
         <p>this will also become slow, everytime the state updates, the component rerenders, when component re-render, isEven func called again. </p>
     </div>)
 }
