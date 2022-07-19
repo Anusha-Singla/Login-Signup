@@ -5,6 +5,8 @@ import Login from "./pages/Login";
 import Navbar from "./pages/Navbar";
 import Home from './pages/Home';
 import Cart from "./pages/Cart";
+import InterviewQuestions from "./components/InterviewQuestions";
+import FetchRequest from "./components/FetchRequest";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/cart" element={<Cart/>}></Route>
+          <Route exact path="/iques" element={<InterviewQuestions  />} />
+          <Route exact path="/fetch" element={<FetchRequest/>}></Route>
         </Routes>
       </div>
     </Router>

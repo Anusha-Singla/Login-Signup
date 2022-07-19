@@ -1,6 +1,8 @@
 import React, { useState, useEffect, createContext, useRef, useReducer } from 'react';
 import About from './About';
 import ComponentA from '../components/ComponentA';
+import ParentComponent from '../components/ReactMemo/ParentComponent';
+import CounterMemo from '../components/CounterMemo';
 
 const FName = createContext();
 const LName = createContext();
@@ -65,6 +67,12 @@ const Home = () => {
                 <button onClick={()=>dispatch({type:'next'})}>➕</button>
                 <button onClick={()=>dispatch({type:'previous'})}>➖</button>
                 <button onClick={()=>dispatch({type:'reset'})}>⚙</button>
+            </div>
+            <div><h4>6. React.memo & useCallback</h4>
+               <ParentComponent/>
+            </div>
+            <div><h4>7. useMemo</h4>
+             <CounterMemo/>
             </div>
         </>
     )
