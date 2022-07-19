@@ -5,12 +5,27 @@ import ComponentA from '../components/ComponentA';
 const FName = createContext();
 const LName = createContext();
 
+const initalCount = {count: 0};
+const reducer = (state, action) =>{
+    switch(action.type){
+        case "next":
+            return {count: state.count+1}
+        case "previous":
+            return {count: state.count-1}
+        case 'reset':
+            return {count: 0}
+        default :
+            throw new Error();
+    }
+}
+
 const Home = () => {
     const [count, setCount] = useState(0);
     const [increment, setIncrement] = useState(0);
     const [singleUser, setSingleUser] = useState("Aarush");
     const newReference = useRef(0);
-
+    const [state, dispatch] = useReducer(reducer, initalCount) 
+    
     useEffect(() => {
         setIncrement(increment + 1)
     }, [])
@@ -44,6 +59,12 @@ const Home = () => {
                     #Check console
                     <button onClick={handleCount}>Count</button>
                 </p>
+            </div>
+            <div><h4>5. useReducer</h4>
+                <p>Count - {state.count}</p>
+                <button onClick={()=>dispatch({type:'next'})}>➕</button>
+                <button onClick={()=>dispatch({type:'previous'})}>➖</button>
+                <button onClick={()=>dispatch({type:'reset'})}>⚙</button>
             </div>
         </>
     )
