@@ -9,18 +9,18 @@ const CounterMemo = () => {
     const incTwo = () => {
         setCounterTwo(counterTwo + 2);
     }
-    const isEven = useMemo(()=>{
-        let i=0;
-        while(i<2000000000) i++ //to slow down
-        return counterOne %2 === 0
+    const isEven = useMemo(() => {
+        let i = 0;
+        while (i < 2000000000) i++ //to slow down
+        return counterOne % 2 === 0
     }, [counterOne])
     //Tell react not to execute isEven when incTwo execute using useMemo
-    return (<div>
-        <div>{counterOne}<span>{isEven? "Even" : "Odd"}</span>
-        <Button variant="outlined" onClick={incOne}>Count-1</Button></div><br/>
-        <div>{counterTwo} 
-        <Button variant='outlined' onClick={incTwo}>Count-2</Button></div> 
+    return (<>
+        {counterOne}<div>{counterOne}<span>{isEven ? "Even" : "Odd"}</span>
+            <Button variant="outlined" onClick={incOne}>Count-1</Button></div><br />
+        <div>{counterTwo}
+            <Button variant='outlined' onClick={incTwo}>Count-2</Button></div>
         <p>this will also become slow, everytime the state updates, the component rerenders, when component re-render, isEven func called again. </p>
-    </div>)
+    </>)
 }
 export default CounterMemo;

@@ -1,5 +1,6 @@
 // import { useState } from "react";
 import useFetch from "../customHooks/useFetch";
+import CircularProgress from '@mui/material/CircularProgress'
 
 const FetchRequest = () => {
     // const [advice, setAdvice] = useState('');
@@ -13,15 +14,19 @@ const FetchRequest = () => {
     // }, [])
 
     const [data] = useFetch('https://api.adviceslip.com/advice')
-    return (
-        <div className="app">
-            <div className="card">
-                <h1 className="heading">{data?.slip.advice}</h1> {/*Random right now*/}
-                <button className="button">
-                    <span>Give me Advice</span>
-                </button>
-            </div>
-        </div>
-    )
+    return (<>
+        {data ? <>
+            <div className="app" >
+                <div className="card" >
+                    <h1 className="heading">{data?.slip?.advice}</h1> {/*Random advice*/}
+                    <button className="button">
+                        <span>Give me Advice</span>
+                    </button>
+                </div >
+            </div ></>
+            : <CircularProgress />
+        }
+
+    </>)
 }
 export default FetchRequest;
