@@ -3,8 +3,9 @@ import About from './About';
 import ComponentA from '../components/ComponentA';
 import ParentComponent from '../components/ReactMemo/ParentComponent';
 import CounterMemo from '../components/CounterMemo';
-import CustomHook from '../components/CustomHook';
 import { Button } from '@mui/material';
+import axios from 'axios';
+import useFetch from '../customHooks/useFetch';
 
 const FName = createContext();
 const LName = createContext();
@@ -29,6 +30,8 @@ const Home = () => {
     const [singleUser, setSingleUser] = useState("Aarush");
     const newReference = useRef(0);
     const [state, dispatch] = useReducer(reducer, initalCount)
+
+    const [data] = useFetch('https://api.adviceslip.com/advice')
 
     useEffect(() => {
         setIncrement(increment + 1)
@@ -77,7 +80,7 @@ const Home = () => {
                 <CounterMemo />
             </div>
             <div><h4>8. Custom Hooks</h4>
-                <CustomHook />
+                {data.slip.advice} {/*random advice everytime*/}
             </div>
         </>
     )
