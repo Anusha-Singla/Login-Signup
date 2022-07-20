@@ -1,11 +1,11 @@
-import React, { useState, useEffect, createContext, useRef, useReducer } from 'react';
+import React, { useState, useEffect, createContext, useRef, useReducer, Suspense  } from 'react';
 import About from './About';
 import ComponentA from '../components/ComponentA';
 import ParentComponent from '../components/ReactMemo/ParentComponent';
 import CounterMemo from '../components/CounterMemo';
 import { Button } from '@mui/material';
-import axios from 'axios';
 import useFetch from '../customHooks/useFetch';
+import CircularProgress from '@mui/material/CircularProgress'
 
 const FName = createContext();
 const LName = createContext();
@@ -23,6 +23,7 @@ const reducer = (state, action) => {
             throw new Error();
     }
 }
+const ComponentD = React.lazy(() => import('../components/ComponentD'));
 
 const Home = () => {
     const [count, setCount] = useState(0);
@@ -42,7 +43,7 @@ const Home = () => {
     }
     return (
         <>
-            <h2>React Hooks Implementation</h2>
+            <h2>REACT HOOKS IMPLEMENTATION</h2>
             <div><h4>1. useState</h4>
                 <p> {count} <Button variant="outlined" onClick={() => setCount(count + 1)}>Counter</Button></p>
             </div>
@@ -82,6 +83,11 @@ const Home = () => {
             <div><h4>8. Custom Hooks</h4>
                 {data?.slip?.advice} {/*random advice everytime*/}
             </div>
+            <h2>CODE SPLITTING</h2>
+            <Suspense fallback={<CircularProgress />}>
+                <ComponentD/>
+            </Suspense>
+            <h4>To avoid fallback we can use startTransition()</h4>
         </>
     )
 }

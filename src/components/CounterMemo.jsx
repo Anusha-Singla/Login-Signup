@@ -1,4 +1,4 @@
-import { Button, ButtonBase } from '@mui/material';
+import { Button } from '@mui/material';
 import React, { useState, useMemo } from 'react';
 const CounterMemo = () => {
     const [counterOne, setCounterOne] = useState(0);
