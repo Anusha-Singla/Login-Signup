@@ -80,7 +80,7 @@ const Home = () => {
                 <CounterMemo />
             </div>
             <div><h4>8. Custom Hooks</h4>
-                {data.slip.advice} {/*random advice everytime*/}
+                {data?.slip?.advice} {/*random advice everytime*/}
             </div>
         </>
     )
