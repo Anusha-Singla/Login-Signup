@@ -34,6 +34,13 @@
       "password": "987987",
       "confirmPassword": "987987",
       "id": 6
+    },
+    {
+      "username": "harman",
+      "email": "hsandhu@gmail.com",
+      "password": "789456133",
+      "confirmPassword": "789456123",
+      "id": 7
     }
   ]
 }
